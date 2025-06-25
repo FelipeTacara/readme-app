@@ -16,7 +16,7 @@ A brief description of what this project does and who it's for
 
 #### Get all items
 
-\`\`\`http
+\`\`\`plaintext
 GET /api/items
 \`\`\`
 
@@ -26,7 +26,7 @@ GET /api/items
 
 #### Get item
 
-\`\`\`http
+\`\`\`plaintext
 GET /api/items/\${id}
 \`\`\`
 
@@ -68,6 +68,7 @@ Any additional information goes here`,
     defaultContent: `## Badges
 
 Add badges from somewhere like: [shields.io](https://shields.io/)
+
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 [![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)`,
@@ -96,5 +97,19 @@ To run this project, you will need to add the following environment variables to
 \`API_KEY\`
 
 \`ANOTHER_API_KEY\``,
+  },
+  {
+    id: "appendix1",
+    label: "Appendix1",
+    defaultContent: `## Appendix
+
+Any additional information goes here`,
+  },
+  {
+    id: "appendix2",
+    label: "Appendix2",
+    defaultContent: `## Appendix
+
+Any additional information goes here`,
   },
 ];

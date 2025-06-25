@@ -101,7 +101,7 @@ export function Sidebar() {
   const [search, setSearch] = useState("");
 
   return (
-    <aside className="w-72 bg-white dark:bg-neutral-900 p-4 border-r overflow-y-auto">
+    <aside className="w-72 bg-white dark:bg-neutral-900 p-4 border-r h-[calc(100vh-64px)] overflow-y-auto">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold text-foreground">Sections</h2>
         <div className="flex gap-2 px-2 ">

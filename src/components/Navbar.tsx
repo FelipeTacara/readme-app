@@ -5,8 +5,10 @@ import { Button } from "./ui/button";
 import { Moon, Sun } from "lucide-react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const path = usePathname();
   const dispatch = useDispatch<AppDispatch>();
   const dark = useSelector((state: RootState) => state.dark);
 
@@ -26,17 +28,19 @@ const Navbar = () => {
 
   return (
     <div className="px-4 h-16 flex items-center justify-between bg-white dark:bg-neutral-900 border-b-1">
-      <Link href="/" className="my-auto text-foreground text-xl">
+      <Link href="/" className="my-auto text-foreground text-xl font-medium">
         Home
       </Link>
       <div className="flex gap-2">
-        <Button
-          variant="outline"
-          onClick={downloadFile}
-          className="hover:text-foreground dark:text-white"
-        >
-          Download
-        </Button>
+        {path === "/generate-readme" && (
+          <Button
+            variant="outline"
+            onClick={downloadFile}
+            className="hover:text-foreground dark:text-white"
+          >
+            Download
+          </Button>
+        )}
         <Button
           variant="outline"
           size="icon"

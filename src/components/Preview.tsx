@@ -15,7 +15,7 @@ export function Preview() {
   );
 
   return (
-    <aside className="w-2/5 bg-white dark:bg-neutral-900 p-4 border-l overflow-y-auto">
+    <aside className="w-2/5 bg-white dark:bg-neutral-900 p-4 border-l h-[calc(100vh-64px)] overflow-y-auto">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold text-foreground">Preview</h2>
         <div className="flex gap-2">

@@ -16,21 +16,21 @@ export function Editor() {
 
   if (!section) {
     return (
-      <main className="flex-1 flex items-center justify-center bg-background dark:bg-neutral-900">
+      <main className="flex-1 flex items-center justify-center bg-background dark:bg-neutral-900 h-[calc(100vh-64px)]">
         <p className="text-foreground">Select a section to edit</p>
       </main>
     );
   }
 
   return (
-    <main className="flex-1 p-4 bg-background">
-      <Card className="flex h-full">
-        <CardContent className="flex flex-1 flex-col gap-4 p-4">
+    <main className="flex-1 p-4 bg-background h-[calc(100vh-64px)] overflow-y-auto">
+      <Card className="flex h-full ">
+        <CardContent className="flex flex-col gap-4 p-4 overflow-y-hidden">
           <h2 className="text-xl font-bold">{section.label}</h2>
           <Textarea
             rows={10}
             value={section.content}
-            className="max-h-full"
+            className=""
             onChange={(e) =>
               dispatch(
                 updateContent({ id: section.id, content: e.target.value })
