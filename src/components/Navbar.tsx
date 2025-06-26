@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="px-4 h-16 flex items-center justify-between bg-white dark:bg-neutral-900 border-b-1">
+    <div className="px-4 h-16 flex items-center justify-between bg-neutral-100 dark:bg-neutral-900 border-b-1">
       <Link href="/" className="my-auto text-foreground text-xl font-medium">
         Home
       </Link>
