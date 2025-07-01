@@ -8,7 +8,7 @@ const initialState = {
   currentId: null as string | null,
 };
 
-export const sectionSlice = createSlice({
+const sectionSlice = createSlice({
   name: "sections",
   initialState,
   reducers: {
@@ -27,11 +27,14 @@ export const sectionSlice = createSlice({
       const index = state.selected.findIndex((s) => s.id === action.payload);
       if (index !== -1) {
         const removed = state.selected.splice(index, 1)[0];
-        state.available.push({
-          id: removed.id,
-          label: removed.label,
-          defaultContent: removed.content,
-        });
+        const exists = state.available.find((s) => s.id === removed.id);
+        if (!exists) {
+          state.available.push({
+            id: removed.id,
+            label: removed.label,
+            defaultContent: removed.content,
+          });
+        }
       }
     },
     updateContent: (
@@ -63,3 +66,5 @@ export const {
   reset,
   setCurrentId,
 } = sectionSlice.actions;
+
+export default sectionSlice.reducer;
