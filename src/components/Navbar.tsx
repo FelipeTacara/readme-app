@@ -6,25 +6,12 @@ import { Moon, Sun } from "lucide-react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { usePathname } from "next/navigation";
+import DownloadButton from "./DownloadButton";
 
 const Navbar = () => {
   const path = usePathname();
   const dispatch = useDispatch<AppDispatch>();
   const dark = useSelector((state: RootState) => state.dark);
-
-  const markdown = useSelector((state: RootState) =>
-    state.sections.selected.map((s) => s.content).join("\n\n")
-  );
-
-  const downloadFile = () => {
-    const blob = new Blob([markdown], { type: "text/markdown" });
-    const url = URL.createObjectURL(blob);
-    const readmeFile = document.createElement("a");
-    readmeFile.href = url;
-    readmeFile.download = "README.md";
-    readmeFile.click();
-    URL.revokeObjectURL(url);
-  };
 
   return (
     <div className="px-4 h-16 flex items-center justify-between bg-neutral-100 dark:bg-neutral-900 border-b-1">
@@ -32,15 +19,7 @@ const Navbar = () => {
         Home
       </Link>
       <div className="flex gap-2">
-        {path === "/generate-readme" && (
-          <Button
-            variant="outline"
-            onClick={downloadFile}
-            className="hover:text-foreground dark:text-white"
-          >
-            Download
-          </Button>
-        )}
+        {path === "/generate-readme" && <DownloadButton />}
         <Button
           variant="outline"
           size="icon"
