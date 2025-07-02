@@ -1,12 +1,13 @@
 "use client";
 
-import { AppDispatch, RootState, toggleTheme } from "@/store/store";
 import { Button } from "./ui/button";
 import { Moon, Sun } from "lucide-react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { usePathname } from "next/navigation";
 import DownloadButton from "./DownloadButton";
+import { AppDispatch, RootState } from "@/store/store";
+import { toggleTheme } from "@/store/slices/themeSlice";
 
 const Navbar = () => {
   const path = usePathname();

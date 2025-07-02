@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { AppDispatch, RootState, updateContent } from "@/store/store";
+import { AppDispatch, RootState } from "@/store/store";
+import { updateContent } from "@/store/slices/sectionSlice";
 
 export function Editor() {
   const { selected, currentId } = useSelector(

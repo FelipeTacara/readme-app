@@ -20,15 +20,14 @@ import {
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import { CSS } from "@dnd-kit/utilities";
 import { useState } from "react";
+import { AppDispatch, RootState } from "@/store/store";
 import {
   addSection,
-  AppDispatch,
   removeSection,
   reorderSections,
   reset,
-  RootState,
   setCurrentId,
-} from "@/store/store";
+} from "@/store/slices/sectionSlice";
 
 function SortableItem({
   id,
