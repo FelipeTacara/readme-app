@@ -3,6 +3,8 @@
 import { useSelector, useDispatch } from "react-redux";
 
 import { Button } from "@/components/ui/button";
+import { CustomSectionModal } from "@/components/CustomSectionModal";
+
 import { RotateCcw, GripVertical, Trash2 } from "lucide-react";
 import {
   DndContext,
@@ -85,6 +87,8 @@ export function Sidebar() {
     (state: RootState) => state.sections
   );
 
+  const [customOpen, setCustomOpen] = useState(false);
+
   const dispatch = useDispatch<AppDispatch>();
 
   const sensors = useSensors(useSensor(PointerSensor));
@@ -157,9 +161,15 @@ export function Sidebar() {
         placeholder="Search sections..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="w-full mb-4 px-2 py-1 rounded border bg-white dark:bg-neutral-800 text-foreground"
+        className="w-full mb-4 px-2 py-1.5 rounded border bg-white dark:bg-neutral-800 text-foreground"
       />
-
+      <Button
+        variant="default"
+        className="w-full mb-2 rounded py-5"
+        onClick={() => setCustomOpen(true)}
+      >
+        + Custom Section
+      </Button>
       {available
         .filter((s) => s.label.toLowerCase().includes(search.toLowerCase()))
         .map((s) => (
@@ -175,6 +185,17 @@ export function Sidebar() {
             <span className="text-foreground">{s.label}</span>
           </Button>
         ))}
+      <CustomSectionModal
+        open={customOpen}
+        onClose={() => setCustomOpen(false)}
+        onSubmit={(title) => {
+          const id = `custom-${crypto.randomUUID()}`;
+          dispatch(
+            addSection({ id, label: title, content: `## ${title}\n\n` })
+          );
+          dispatch(setCurrentId(id));
+        }}
+      />
     </aside>
   );
 }

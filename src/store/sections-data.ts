@@ -98,18 +98,4 @@ To run this project, you will need to add the following environment variables to
 
 \`ANOTHER_API_KEY\``,
   },
-  {
-    id: "appendix1",
-    label: "Appendix1",
-    defaultContent: `## Appendix
-
-Any additional information goes here`,
-  },
-  {
-    id: "appendix2",
-    label: "Appendix2",
-    defaultContent: `## Appendix
-
-Any additional information goes here`,
-  },
 ];

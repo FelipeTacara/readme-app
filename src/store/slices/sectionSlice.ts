@@ -12,17 +12,31 @@ const sectionSlice = createSlice({
   name: "sections",
   initialState,
   reducers: {
-    addSection: (state, action: PayloadAction<string>) => {
-      const item = state.available.find((s) => s.id === action.payload);
-      if (item) {
-        state.available = state.available.filter((s) => s.id !== item.id);
-        state.selected.push({
-          id: item.id,
-          label: item.label,
-          content: item.defaultContent,
-        });
+    addSection: (
+      state,
+      action: PayloadAction<
+        string | { id: string; label: string; content: string }
+      >
+    ) => {
+      if (typeof action.payload === "string") {
+        const item = state.available.find((s) => s.id === action.payload);
+        if (item) {
+          state.available = state.available.filter((s) => s.id !== item.id);
+          state.selected.push({
+            id: item.id,
+            label: item.label,
+            content: item.defaultContent,
+          });
+        }
+      } else {
+        const { id, label, content } = action.payload;
+        const exists = state.selected.find((s) => s.id === id);
+        if (!exists) {
+          state.selected.push({ id, label, content });
+        }
       }
     },
+
     removeSection: (state, action: PayloadAction<string>) => {
       const index = state.selected.findIndex((s) => s.id === action.payload);
       if (index !== -1) {
