@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import sectionReducer from "./slices/sectionSlice";
-import themeReducer from "./slices/themeSlice";
+import themeReducer from "./slices/themeSlice"; // Nome do export padrão
 
 export const store = configureStore({
   reducer: {
     sections: sectionReducer,
-    dark: themeReducer,
+    theme: themeReducer, // Nome atualizado
   },
 });
 

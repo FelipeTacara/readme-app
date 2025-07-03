@@ -4,7 +4,7 @@ import { RootState } from "@/store/store";
 import { useEffect } from "react";
 
 export default function ThemeWrapper() {
-  const theme = useSelector((state: RootState) => state.dark.value);
+  const theme = useSelector((state: RootState) => state.theme.value);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
